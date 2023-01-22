@@ -2,3 +2,62 @@
   display: flex;
   justify-content: space-between;
 }
+
+.search-form {
+  display: grid;
+  grid-template-areas:
+    "searchbar search"
+    "error ."
+    "results .";
+}
+
+.search-results {
+  grid-area: results;
+}
+
+.searchbar {
+  grid-area: searchbar
+}
+
+.search-btn {
+  grid-area: search;
+}
+
+.search-error {
+  grid-area: error
+}
+
+#content {
+  display: grid;
+  grid-template-areas:
+    "location weather"
+    "forecast forecast";
+}
+
+.location {
+  grid-area: location;
+}
+
+.weather {
+  grid-area: weather;
+}
+
+.weather__current,
+.weather__low-high,
+.card__low-high {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.forecast {
+  grid-area: forecast;
+}
+
+.daily-forecast {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  text-align: center;
+}

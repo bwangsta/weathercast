@@ -1,16 +1,36 @@
-function Weather() {
+import {
+    selectWeatherIcon,
+    convertTemperature,
+    getDatetime,
+    selectBackgroundImage,
+    selectDescription,
+} from "../helper.js"
+
+function Weather(props) {
+    const { temperature, weathercode, time } = props.weatherData.current_weather
+    const { date, weekday } = getDatetime(time, props.weatherData.timezone)
+    const { temperature_2m_min, temperature_2m_max } = props.weatherData.daily
+
     return (
         <div className="weather">
-            <p className="weather__date">January 14, 2023</p>
-            <p className="weather__weekday">Sunday</p>
+            <p className="weather__date">{date}</p>
+            <p className="weather__weekday">{weekday}</p>
             <div className="weather__current">
-                <i className="weather__icon bi bi-cloudy"></i>
-                <p className="weather__temperature">81°F</p>
+                <i className={`weather__icon bi ${selectWeatherIcon(weathercode)}`}></i>
+                <p className="weather__temperature">
+                    {convertTemperature(temperature)}
+                </p>
             </div>
-            <p className="weather__description">Cloudy</p>
+            <p className="weather__description">
+                {selectDescription(weathercode)}
+            </p>
             <div className="weather__low-high">
-                <p className="weather__low">L:65°F</p>
-                <p className="weather__high">H:85°F</p>
+                <p className="weather__low">
+                    L:{convertTemperature(temperature_2m_min[0])}
+                </p>
+                <p className="weather__high">
+                    H:{convertTemperature(temperature_2m_max[0])}
+                </p>
             </div>
         </div>
     )

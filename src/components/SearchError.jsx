@@ -1,7 +1,7 @@
 function SearchError() {
     return (
         <>
-            <span className="search-error"></span>
+            <span className="search-error">Error</span>
         </>
     )
 }

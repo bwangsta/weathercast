@@ -1,13 +1,12 @@
-function SearchResults() {
-  return (
-    <div className="search-results">
-      <ul>
-        <li>Los Angeles, California USA</li>
-        <li>Irvine, California USA</li>
-        <li>New York, New York USA</li>
-      </ul>
-    </div>
-  )
+function SearchResults(props) {
+    const searchResults = props.geoData.map(result => {
+        return <li key={result.id}>{result.name}, {result.admin1} {result.country_code}</li>
+    })
+    return (
+        <ul className="search-results">
+            {searchResults}
+        </ul>
+    )
 }
 
 export default SearchResults

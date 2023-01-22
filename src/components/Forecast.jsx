@@ -1,11 +1,11 @@
 import DailyForecast from "./DailyForecast"
 
-function Forecast() {
+function Forecast(props) {
     return (
         <div className="forecast">
             <button type="button">Daily</button>
             <button type="button">Hourly</button>
-            <DailyForecast />
+            <DailyForecast daily={props.daily} />
         </div>
     )
 }

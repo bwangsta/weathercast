@@ -6,4 +6,9 @@
 
 body {
   background-color: rgb(104, 104, 104);
+  font-family: Nunito, sans-serif;
+}
+
+ul {
+  list-style: none;
 }
