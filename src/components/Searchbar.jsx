@@ -3,7 +3,7 @@ import SearhResults from "./SearchResults"
 
 function Searchbar(props) {
     return (
-        <form noValidate role="search" className="search-form">
+        <form noValidate role="search" className="search-form" onSubmit={(e) => props.handleSubmit(e)}>
             <input
                 type="search"
                 placeholder="Location Name"
@@ -14,6 +14,8 @@ function Searchbar(props) {
                 minLength={2}
                 maxLength={60}
                 required
+                onChange={(e) => props.handleChange(e.target.value)}
+                value={props.locationText}
             />
             <SearchError />
             <SearhResults geoData={props.geoData} />

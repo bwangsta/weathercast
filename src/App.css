@@ -51,13 +51,10 @@
 
 .forecast {
   grid-area: forecast;
+  text-align: center;
 }
 
 .daily-forecast {
   display: flex;
   justify-content: space-between;
-}
-
-.card {
-  text-align: center;
 }
