@@ -1,3 +1,9 @@
+import { Swiper, SwiperSlide } from "swiper/react"
+import { FreeMode, Pagination } from "swiper"
+import "swiper/css"
+import "swiper/css/free-mode"
+import "swiper/css/pagination"
+
 import ForecastCard from "./ForecastCard"
 import {
     selectWeatherIcon,
@@ -12,20 +18,44 @@ function DailyForecast(props) {
     const dailyWeather = [];
     for (let i = 1; i < time.length; i++) {
         dailyWeather.push(
-            <ForecastCard
-                key={time[i]}
-                weekday={getDatetime(time[i]).weekday}
-                icon={selectWeatherIcon(weathercode[i])}
-                description={selectDescription(weathercode[i])}
-                low_temp={convertTemperature(temperature_2m_min[i])}
-                high_temp={convertTemperature(temperature_2m_max[i])}
-            />
+            <SwiperSlide key={time[i]}>
+                <ForecastCard
+                    weekday={getDatetime(time[i]).weekday}
+                    icon={selectWeatherIcon(weathercode[i])}
+                    description={selectDescription(weathercode[i])}
+                    low_temp={convertTemperature(temperature_2m_min[i])}
+                    high_temp={convertTemperature(temperature_2m_max[i])}
+                />
+            </SwiperSlide>
         )
     }
     return (
-        <div className="daily-forecast">
+        <Swiper
+            freeMode={true}
+            grabCursor={true}
+            modules={[FreeMode, Pagination]}
+            spaceBetween={16}
+            slidesPerView={4}
+            breakpoints={{
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                640: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                1000: {
+                    slidesPerView: 6,
+                    spaceBetween: 40
+                }
+            }}
+        >
             {dailyWeather}
-        </div>
+        </ Swiper >
+
+        // className="daily-forecast"
     )
 }
 

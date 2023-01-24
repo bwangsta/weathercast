@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+
 import './App.css'
 import Navbar from "./components/Navbar"
 import Location from "./components/Location";
@@ -68,8 +69,10 @@ function App() {
             <Navbar geoData={geoData} locationText={locationText} handleChange={handleChange} handleSubmit={handleSubmit} />
             {hasSubmitted &&
                 <main id="content">
-                    <Location geoData={geoData} />
-                    <Weather weatherData={weatherData} />
+                    <div className="hero container">
+                        <Location geoData={geoData} />
+                        <Weather weatherData={weatherData} />
+                    </div>
                     <Forecast weatherData={weatherData} />
                 </main>
             }

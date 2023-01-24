@@ -8,7 +8,7 @@ function Searchbar(props) {
                 type="search"
                 placeholder="Location Name"
                 id="searchbar"
-                className="searchbar"
+                className="search__input"
                 name="q"
                 aria-label="Search for location"
                 minLength={2}

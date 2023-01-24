@@ -1,3 +1,9 @@
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -15,31 +21,87 @@
   grid-area: results;
 }
 
-.searchbar {
-  grid-area: searchbar
+.search__input,
+.search-btn {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--white);
+  font-size: var(--text-base)
+}
+
+.search__input {
+  grid-area: searchbar;
+  min-width: 100%;
+  border-bottom: 2px solid var(--white);
+  background-color: transparent;
+  color: var(--white);
+}
+
+.search__input.invalid {
+  border-color: red;
+}
+
+.search__input:focus {
+  outline: none !important;
+  color: var(--white);
+}
+
+.search__input::placeholder {
+  color: var(--white);
+}
+
+.search__input:focus::placeholder {
+  color: transparent;
 }
 
 .search-btn {
   grid-area: search;
+  margin-left: 0.5rem;
+  font-weight: 900;
 }
 
 .search-error {
-  grid-area: error
+  grid-area: error;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem 0;
+  color: red;
 }
 
-#content {
-  display: grid;
-  grid-template-areas:
-    "location weather"
-    "forecast forecast";
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
-.location {
-  grid-area: location;
+.location__name {
+  font-size: clamp(var(--text-3xl), 10vw, var(--text-4xl));
+  font-weight: 900;
+}
+
+.location__state,
+.location__country {
+  font-size: clamp(var(--text-xl), 5vw, var(--text-2xl));
+  font-weight: 700;
 }
 
 .weather {
-  grid-area: weather;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather__date {
+  font-size: var(--text-xl)
+}
+
+.weather__weekday {
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+}
+
+.weather__icon {
+  font-size: clamp(var(--text-5xl), 20vw, var(--text-6xl));
 }
 
 .weather__current,
@@ -47,14 +109,40 @@
 .card__low-high {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
-.forecast {
-  grid-area: forecast;
+.weather__temperature {
+  font-size: clamp(var(--text-3xl), 10vw, var(--text-4xl));
+  font-weight: 900;
+}
+
+.swiper-wrapper {
+  padding: 1rem 0;
+}
+
+.forecast__btns {
   text-align: center;
 }
 
-.daily-forecast {
+.card {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+}
+
+.card__title {
+  font-size: clamp(var(--text-base), 5vw, var(--text-xl));
+  font-weight: 700;
+}
+
+.card__icon {
+  font-size: 5em;
+}
+
+.card__description {
+  text-align: center;
 }

@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900;1000&display=swap');
+
+:root {
+  --white: #FBFBFB;
+  --gray: rgb(104 104 104);
+  --black: rgb(37, 36, 36);
+  --text-base: 1rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3.375rem;
+  --text-4xl: 5.063rem;
+  --text-5xl: 7.594rem;
+  --text-6xl: 11.391rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,16 +21,34 @@
 
 #root {
   min-height: 100vh;
-  background-color: rgb(104, 104, 104);
-  font-family: Nunito, sans-serif;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
+  background-color: var(--gray);
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--gray);
+  background-image: url("./assets/img/sunny.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: center;
+  color: var(--white)
 }
 
 ul {
   list-style: none;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+button,
+li {
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  padding: 0.5rem;
+  border-radius: 5px;
 }
