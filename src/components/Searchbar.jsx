@@ -14,7 +14,7 @@ function Searchbar(props) {
                 minLength={2}
                 maxLength={60}
                 required
-                onChange={(e) => props.handleChange(e.target.value)}
+                onChange={(e) => props.handleChange(e)}
                 value={props.locationText}
             />
             <SearchError />

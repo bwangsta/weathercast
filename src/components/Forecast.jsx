@@ -5,7 +5,7 @@ function Forecast(props) {
         <div className="forecast">
             <button type="button">Daily</button>
             <button type="button">Hourly</button>
-            <DailyForecast daily={props.daily} />
+            <DailyForecast weatherData={props.weatherData} />
         </div>
     )
 }

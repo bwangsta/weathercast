@@ -1,5 +1,4 @@
 function Location(props) {
-
     const { name, admin1, country } = props.geoData[0]
     return (
         <div className="location">

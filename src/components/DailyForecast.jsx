@@ -7,7 +7,7 @@ import {
 } from "../helper.js"
 
 function DailyForecast(props) {
-    const { time, weathercode, temperature_2m_min, temperature_2m_max } = props.daily
+    const { time, weathercode, temperature_2m_min, temperature_2m_max } = props.weatherData.daily
 
     const dailyWeather = [];
     for (let i = 1; i < time.length; i++) {
