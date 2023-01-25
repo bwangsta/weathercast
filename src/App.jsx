@@ -38,7 +38,7 @@ function App() {
   async function fetchWeather(index) {
     try {
       const { latitude, longitude } = geoData[index]
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto&temperature_unit=fahrenheit`)
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=fahrenheit`)
       const data = await response.json()
       setWeatherData(data)
       setStatus("submitted")
@@ -48,6 +48,7 @@ function App() {
     }
   }
 
+  // when user hits submit in search input
   function handleSubmit(event) {
     event.preventDefault()
     indexRef.current = 0
@@ -55,17 +56,15 @@ function App() {
     setLocationText("")
   }
 
+  // when user types something in search input
   function handleChange(event) {
     setLocationText(event.target.value)
     setStatus("typing")
   }
 
-  // when search result item is clicked on
+  // when a search result is clicked on
   function handleClick(event) {
-    // retrieve the data-index
     indexRef.current = parseInt(event.target.dataset.index)
-    // get the latitude and longitude from geoData based on the index
-    // fetch the weather
     fetchWeather(indexRef.current)
     setLocationText("")
   }
@@ -74,6 +73,7 @@ function App() {
     if (locationText.length > 1) {
       fetchGeocode()
     }
+    // setStatus("error")
   }, [locationText])
 
 
@@ -89,10 +89,10 @@ function App() {
       />
       {status === "submitted" &&
         <main id="content">
-          <div className="hero container">
+          <section className="hero container">
             <Location geoData={geoData[indexRef.current]} />
             <Weather weatherData={weatherData} />
-          </div>
+          </section>
           <Forecast weatherData={weatherData} />
         </main>
       }

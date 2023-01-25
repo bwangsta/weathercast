@@ -1,7 +1,11 @@
 .container {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.active {
+  background-color: var(--gray);
 }
 
 .navbar {
@@ -162,6 +166,7 @@
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
+  padding: 1rem 0.5rem 0 0.5rem;
 }

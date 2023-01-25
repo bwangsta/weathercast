@@ -9,27 +9,35 @@ import {
   selectWeatherIcon,
   convertTemperature,
   getDatetime,
+  getCurrentTime,
+  compareTime,
   selectDescription,
 } from "../helper.js"
 
-function DailyForecast(props) {
-  const { time, weathercode, temperature_2m_min, temperature_2m_max } = props.dailyData
+function HourlyForecast(props) {
+  const { time, weathercode, temperature_2m } = props.hourlyData
 
-  const dailyWeather = [];
-  for (let i = 1; i < time.length; i++) {
-    dailyWeather.push(
-      <SwiperSlide key={time[i]}>
-        <ForecastCard
-          datetime={getDatetime(time[i]).weekday}
-          icon={selectWeatherIcon(weathercode[i])}
-          description={selectDescription(weathercode[i])}
-          low_temp={convertTemperature(temperature_2m_min[i])}
-          high_temp={convertTemperature(temperature_2m_max[i])}
-          metric={props.metric}
-        />
-      </SwiperSlide>
-    )
+  const hourlyWeather = []
+  let i = 0
+
+  // only displays the weather for the next 24 hours based on current time
+  while (hourlyWeather.length < 24) {
+    if (compareTime(time[i], props.timezone)) {
+      hourlyWeather.push(
+        <SwiperSlide key={time[i]}>
+          <ForecastCard
+            datetime={getDatetime(time[i]).time}
+            icon={selectWeatherIcon(weathercode[i])}
+            description={selectDescription(weathercode[i])}
+            temp={convertTemperature(temperature_2m[i])}
+            metric={props.metric}
+          />
+        </SwiperSlide>
+      )
+    }
+    i++
   }
+
   return (
     <Swiper
       freeMode={true}
@@ -53,9 +61,9 @@ function DailyForecast(props) {
         }
       }}
     >
-      {dailyWeather}
+      {hourlyWeather}
     </ Swiper >
   )
 }
 
-export default DailyForecast
+export default HourlyForecast
