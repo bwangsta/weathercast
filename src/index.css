@@ -21,7 +21,6 @@
 
 #root {
   min-height: 100vh;
-  background-color: var(--gray);
   font-family: 'Nunito', sans-serif;
   background-color: var(--gray);
   background-image: url("./assets/img/sunny.jpg");

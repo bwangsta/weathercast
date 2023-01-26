@@ -18,7 +18,7 @@ In order to setup and work on this project on your own, you will need to:
 `npm install`
 
 3. Run\
-`npm run build`
+`npm run dev`
 
 ## Usage
 Type in a city in the search bar and the webpage will display its current weather and its future daily forecast. If the location is different from the one you want, type the location  name in the search bar and after a second, a search result will pop up and allow you to select the correct location. 
@@ -26,13 +26,13 @@ Type in a city in the search bar and the webpage will display its current weathe
 ## Roadmap
 - [x] Dynamically change background image based on location's current weather
 - [x] Show the time of the location queried
+- [x] Transition to another free weather API
+- [x] Show search results when there are cities with the same names and allows user to select which one they want
+- [x] Add hourly forecast for the next 24 hours
 - [ ] Add sound effects based on the weather
 - [ ] Display weather based on user's location by default
 - [ ] Add more weather statistics
 - [ ] Add button to toggle between Fahrenheit and Celcius
-- [x] Transition to another free weather API
-- [x] Show search results when there are cities with the same names and allows user to select which one they want
-- [ ] Add hourly forecast for the next 24 hours
 - [ ] Add animations
 - [ ] Swap between day and night background images depending on sunrise/sunset time
 
