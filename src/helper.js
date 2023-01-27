@@ -55,7 +55,7 @@ function getDatetime(datetime, timezone) {
 
 // calculate the different in milliseconds between current time and another time
 // returns true if the time has not passed yet
-function compareTime(datetime, timezone) {
+function hasTimePassed(datetime, timezone) {
   const now = DateTime.now().setZone(timezone)
   const dt = DateTime.fromISO(datetime, { zone: timezone })
   const diff = now.diff(dt).toObject()
@@ -117,7 +117,7 @@ export {
   convertTemperature,
   getDatetime,
   getCurrentTime,
-  compareTime,
+  hasTimePassed,
   selectBackgroundImage,
   selectDescription,
 }

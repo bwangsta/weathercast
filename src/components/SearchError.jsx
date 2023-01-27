@@ -1,7 +1,7 @@
-function SearchError() {
+function SearchError(props) {
   return (
     <>
-      <span className="search-error">Error</span>
+      <span className="search-error">{props.errorType}</span>
     </>
   )
 }

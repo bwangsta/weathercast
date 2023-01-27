@@ -4,6 +4,7 @@
   --white: #FBFBFB;
   --gray: rgb(104 104 104);
   --black: rgb(37, 36, 36);
+  --text-sm: 0.8rem;
   --text-base: 1rem;
   --text-xl: 1.5rem;
   --text-2xl: 2.25rem;
@@ -13,14 +14,21 @@
   --text-6xl: 11.391rem;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
+  font: inherit;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: 'Nunito', sans-serif;
   background-color: var(--gray);
   background-image: url("./assets/img/sunny.jpg");
@@ -28,15 +36,14 @@
   background-size: cover;
   background-blend-mode: multiply;
   background-position: center;
-  color: var(--white)
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 ul {
   list-style: none;
-}
-
-p {
-  font-size: 1.125rem;
 }
 
 button,

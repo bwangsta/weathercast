@@ -9,9 +9,8 @@ import {
   selectWeatherIcon,
   convertTemperature,
   getDatetime,
-  getCurrentTime,
-  compareTime,
   selectDescription,
+  hasTimePassed,
 } from "../helper.js"
 
 function HourlyForecast(props) {
@@ -22,7 +21,7 @@ function HourlyForecast(props) {
 
   // only displays the weather for the next 24 hours based on current time
   while (hourlyWeather.length < 24) {
-    if (compareTime(time[i], props.timezone)) {
+    if (hasTimePassed(time[i], props.timezone)) {
       hourlyWeather.push(
         <SwiperSlide key={time[i]}>
           <ForecastCard

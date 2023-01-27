@@ -46,7 +46,6 @@ function DailyForecast(props) {
           slidesPerView: 4,
           spaceBetween: 16
         },
-        // when window width is >= 640px
         1000: {
           slidesPerView: 6,
           spaceBetween: 16

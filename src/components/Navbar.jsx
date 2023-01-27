@@ -8,6 +8,7 @@ function Navbar(props) {
         geoData={props.geoData}
         locationText={props.locationText}
         status={props.status}
+        errorType={props.errorType}
         handleChange={props.handleChange}
         handleSubmit={props.handleSubmit}
         handleClick={props.handleClick}

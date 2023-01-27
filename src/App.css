@@ -1,7 +1,7 @@
 .container {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .active {
@@ -11,13 +11,23 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   padding: 1rem;
+}
+
+.unit-btn,
+.volume-btn {
+  font-size: var(--text-xl);
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .search-form {
   display: grid;
   grid-template-areas:
-    "searchbar search"
+    "searchbar ."
     "error ."
     "results .";
   position: relative;
@@ -39,23 +49,19 @@
   background-color: black;
 }
 
-.search__input,
-.search-btn {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  border: 2px solid var(--white);
-  font-size: var(--text-base)
-}
-
 .search__input {
   grid-area: searchbar;
   min-width: 100%;
-  border-bottom: 2px solid var(--white);
   background-color: transparent;
   color: var(--white);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: var(--text-base);
+  border: 2px solid var(--white);
+  text-indent: 1.5rem;
 }
 
-.search__input.invalid {
+.invalid {
   border-color: red;
 }
 
@@ -73,24 +79,32 @@
 }
 
 .search-btn {
-  grid-area: search;
-  margin-left: 0.5rem;
+  grid-area: searchbar;
+  border: none;
+  justify-self: start;
   font-weight: 900;
 }
 
 .search-error {
   grid-area: error;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   padding: 0.1rem 0.5rem 0;
   color: red;
+  position: absolute;
 }
 
 .hero {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+@media (min-width: 770px) {
+  .hero {
+    justify-content: space-between;
+  }
 }
 
 .location__name {
@@ -110,16 +124,18 @@
   align-items: center;
 }
 
-.weather__date {
+.weather__date,
+.weather__description,
+.weather__low-high {
   font-size: var(--text-xl)
 }
 
 .weather__weekday {
-  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+  font-size: var(--text-2xl);
 }
 
 .weather__icon {
-  font-size: clamp(var(--text-5xl), 20vw, var(--text-6xl));
+  font-size: var(--text-5xl);
 }
 
 .weather__current,
@@ -166,7 +182,6 @@
 }
 
 footer {
-  /* position: fixed;
-  bottom: 0; */
-  padding: 1rem 0.5rem 0 0.5rem;
+  font-size: var(--text-sm);
+  padding: 0 0.5rem;
 }

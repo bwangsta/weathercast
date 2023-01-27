@@ -12,6 +12,7 @@ function App() {
   const [geoData, setGeoData] = useState([])
   const [weatherData, setWeatherData] = useState({})
   const [status, setStatus] = useState("empty")
+  const [errorType, setErrorType] = useState("")
   const indexRef = useRef(0)
 
   // get location data from API
@@ -21,18 +22,25 @@ function App() {
       try {
         const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`)
         const data = await response.json()
-        setGeoData(data.results)
-        localStorage.setItem(locationText, JSON.stringify(data.results))
+        if (data.results !== undefined) {
+          setGeoData(data.results)
+          localStorage.setItem(locationText, JSON.stringify(data.results))
+        }
+        else {
+          setStatus("error")
+          setErrorType("Unable to find the location. Please enter a different location")
+        }
       }
       catch (error) {
         console.log(error)
       }
     }
     else {
-      const parsedLocations = JSON.parse(localStorage.getItem(locationText))
+      const parsedLocations = JSON.parse(item)
       setGeoData(parsedLocations)
     }
   }
+
 
   // get weather data from API 
   async function fetchWeather(index) {
@@ -49,11 +57,14 @@ function App() {
   }
 
   // when user hits submit in search input
+  // automatically retrieve top search result
   function handleSubmit(event) {
     event.preventDefault()
-    indexRef.current = 0
-    fetchWeather(indexRef.current)
-    setLocationText("")
+    if (status !== "error" && status !== "empty") {
+      indexRef.current = 0
+      fetchWeather(indexRef.current)
+      setLocationText("")
+    }
   }
 
   // when user types something in search input
@@ -63,6 +74,7 @@ function App() {
   }
 
   // when a search result is clicked on
+  // retrieve data for that specific location
   function handleClick(event) {
     indexRef.current = parseInt(event.target.dataset.index)
     fetchWeather(indexRef.current)
@@ -70,10 +82,19 @@ function App() {
   }
 
   useEffect(() => {
-    if (locationText.length > 1) {
-      fetchGeocode()
+    if (status !== "empty") {
+      if (locationText.length === 0) {
+        setStatus("error")
+        setErrorType("Please enter a location")
+      }
+      else if (locationText.length === 1) {
+        setStatus("error")
+        setErrorType("Location name should be at least 2 characters")
+      }
+      else {
+        fetchGeocode()
+      }
     }
-    // setStatus("error")
   }, [locationText])
 
 
@@ -83,19 +104,22 @@ function App() {
         geoData={geoData}
         locationText={locationText}
         status={status}
+        errorType={errorType}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleClick={handleClick}
       />
-      {status === "submitted" &&
-        <main id="content">
-          <section className="hero container">
-            <Location geoData={geoData[indexRef.current]} />
-            <Weather weatherData={weatherData} />
-          </section>
-          <Forecast weatherData={weatherData} />
-        </main>
-      }
+      <main id="content">
+        {status === "submitted" &&
+          <>
+            <section className="hero container">
+              <Location geoData={geoData[indexRef.current]} />
+              <Weather weatherData={weatherData} />
+            </section>
+            <Forecast weatherData={weatherData} />
+          </>
+        }
+      </main>
       <Footer />
     </>
   )

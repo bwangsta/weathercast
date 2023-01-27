@@ -1,5 +1,5 @@
 # Weathering React
-This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I used Typescript and React rather than pure Javascript. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React and Typescript to get more practice using React.
+This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I used React. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React to get more practice using React.
 
 ## Built With 
 - React

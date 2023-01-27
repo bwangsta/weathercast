@@ -10,14 +10,14 @@ function Forecast(props) {
       <div className="forecast__btns">
         <button
           type="button"
-          className={`daily-btn ${metric === "daily" && "active"}`}
+          className={`daily-btn ${metric === "daily" ? "active" : ""}`}
           onClick={() => setMetric("daily")}
         >
           Daily
         </button>
         <button
           type="button"
-          className={`hourly-btn ${metric === "hourly" && "active"}`}
+          className={`hourly-btn ${metric === "hourly" ? "active" : ""}`}
           onClick={() => setMetric("hourly")}
         >
           Hourly
