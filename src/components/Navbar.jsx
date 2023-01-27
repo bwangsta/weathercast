@@ -3,7 +3,12 @@ import Searchbar from "./Searchbar"
 function Navbar(props) {
   return (
     <nav className="navbar">
-      <button className="unit-btn">F°</button>
+      <button
+        className="unit-btn"
+        onClick={props.handleUnitClick}
+      >
+        {props.temperatureSymbol}
+      </button>
       <Searchbar
         geoData={props.geoData}
         locationText={props.locationText}
@@ -13,7 +18,9 @@ function Navbar(props) {
         handleSubmit={props.handleSubmit}
         handleClick={props.handleClick}
       />
-      <button className="volume-btn"><i className="bi bi-volume-up"></i></button>
+      <button className="volume-btn">
+        <i className="bi bi-volume-up"></i>
+      </button>
     </nav>
   )
 }

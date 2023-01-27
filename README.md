@@ -29,10 +29,10 @@ Type in a city in the search bar and the webpage will display its current weathe
 - [x] Transition to another free weather API
 - [x] Show search results when there are cities with the same names and allows user to select which one they want
 - [x] Add hourly forecast for the next 24 hours
+- [x] Add button to toggle between Fahrenheit and Celcius
 - [ ] Add sound effects based on the weather
 - [ ] Display weather based on user's location by default
 - [ ] Add more weather statistics
-- [ ] Add button to toggle between Fahrenheit and Celcius
 - [ ] Add animations
 - [ ] Swap between day and night background images depending on sunrise/sunset time
 

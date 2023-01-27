@@ -26,6 +26,7 @@ function DailyForecast(props) {
           low_temp={convertTemperature(temperature_2m_min[i])}
           high_temp={convertTemperature(temperature_2m_max[i])}
           metric={props.metric}
+          temperatureSymbol={props.temperatureSymbol}
         />
       </SwiperSlide>
     )

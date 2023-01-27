@@ -11,6 +11,7 @@ function App() {
   const [locationText, setLocationText] = useState("")
   const [geoData, setGeoData] = useState([])
   const [weatherData, setWeatherData] = useState({})
+  const [temperatureUnit, setTemperatureUnit] = useState({ type: "fahrenheit", symbol: "F°" })
   const [status, setStatus] = useState("empty")
   const [errorType, setErrorType] = useState("")
   const indexRef = useRef(0)
@@ -46,7 +47,7 @@ function App() {
   async function fetchWeather(index) {
     try {
       const { latitude, longitude } = geoData[index]
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=fahrenheit`)
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit.type}`)
       const data = await response.json()
       setWeatherData(data)
       setStatus("submitted")
@@ -81,6 +82,17 @@ function App() {
     setLocationText("")
   }
 
+  function handleUnitClick() {
+    setTemperatureUnit(prevUnit => {
+      if (prevUnit.type === "fahrenheit") {
+        return { type: "celsius", symbol: "C°" }
+      }
+      else {
+        return { type: "fahrenheit", symbol: "F°" }
+      }
+    })
+  }
+
   useEffect(() => {
     if (status !== "empty") {
       if (locationText.length === 0) {
@@ -97,6 +109,11 @@ function App() {
     }
   }, [locationText])
 
+  useEffect(() => {
+    if (status !== "empty") {
+      fetchWeather(indexRef.current)
+    }
+  }, [temperatureUnit])
 
   return (
     <>
@@ -105,18 +122,20 @@ function App() {
         locationText={locationText}
         status={status}
         errorType={errorType}
+        temperatureSymbol={temperatureUnit.symbol}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleClick={handleClick}
+        handleUnitClick={handleUnitClick}
       />
       <main id="content">
         {status === "submitted" &&
           <>
             <section className="hero container">
               <Location geoData={geoData[indexRef.current]} />
-              <Weather weatherData={weatherData} />
+              <Weather weatherData={weatherData} temperatureSymbol={temperatureUnit.symbol} />
             </section>
-            <Forecast weatherData={weatherData} />
+            <Forecast weatherData={weatherData} temperatureSymbol={temperatureUnit.symbol} />
           </>
         }
       </main>

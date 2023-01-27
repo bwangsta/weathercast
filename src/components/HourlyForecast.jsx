@@ -30,6 +30,7 @@ function HourlyForecast(props) {
             description={selectDescription(weathercode[i])}
             temp={convertTemperature(temperature_2m[i])}
             metric={props.metric}
+            temperatureSymbol={props.temperatureSymbol}
           />
         </SwiperSlide>
       )

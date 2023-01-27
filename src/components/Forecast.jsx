@@ -24,8 +24,17 @@ function Forecast(props) {
         </button>
       </div>
       {metric === "daily" ?
-        <DailyForecast dailyData={props.weatherData.daily} metric={metric} /> :
-        <HourlyForecast hourlyData={props.weatherData.hourly} timezone={props.weatherData.timezone} metric={metric} />
+        <DailyForecast
+          dailyData={props.weatherData.daily}
+          metric={metric}
+          temperatureSymbol={props.temperatureSymbol}
+        /> :
+        <HourlyForecast
+          hourlyData={props.weatherData.hourly}
+          timezone={props.weatherData.timezone}
+          metric={metric}
+          temperatureSymbol={props.temperatureSymbol}
+        />
       }
     </section>
   )

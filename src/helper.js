@@ -108,7 +108,7 @@ function selectDescription(code) {
 }
 
 function convertTemperature(temp) {
-  return `${Math.ceil(temp)}°F`
+  return `${Math.ceil(temp)}`
 }
 
 
