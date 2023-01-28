@@ -41,7 +41,7 @@ function DailyForecast(props) {
       breakpoints={{
         320: {
           slidesPerView: 2,
-          spaceBetween: 16
+          spaceBetween: 8
         },
         640: {
           slidesPerView: 4,

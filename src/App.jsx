@@ -11,7 +11,7 @@ function App() {
   const [locationText, setLocationText] = useState("")
   const [geoData, setGeoData] = useState([])
   const [weatherData, setWeatherData] = useState({})
-  const [temperatureUnit, setTemperatureUnit] = useState({ type: "fahrenheit", symbol: "F°" })
+  const [temperatureUnit, setTemperatureUnit] = useState({ type: "fahrenheit", symbol: "°F" })
   const [status, setStatus] = useState("empty")
   const [errorType, setErrorType] = useState("")
   const indexRef = useRef(0)
@@ -41,7 +41,6 @@ function App() {
       setGeoData(parsedLocations)
     }
   }
-
 
   // get weather data from API 
   async function fetchWeather(index) {
@@ -85,10 +84,10 @@ function App() {
   function handleUnitClick() {
     setTemperatureUnit(prevUnit => {
       if (prevUnit.type === "fahrenheit") {
-        return { type: "celsius", symbol: "C°" }
+        return { type: "celsius", symbol: "°C" }
       }
       else {
-        return { type: "fahrenheit", symbol: "F°" }
+        return { type: "fahrenheit", symbol: "°F" }
       }
     })
   }
@@ -127,15 +126,16 @@ function App() {
         handleSubmit={handleSubmit}
         handleClick={handleClick}
         handleUnitClick={handleUnitClick}
+        weatherData={weatherData}
       />
       <main id="content">
         {status === "submitted" &&
           <>
             <section className="hero container">
               <Location geoData={geoData[indexRef.current]} />
-              <Weather weatherData={weatherData} temperatureSymbol={temperatureUnit.symbol} />
+              <Weather weatherData={weatherData} />
             </section>
-            <Forecast weatherData={weatherData} temperatureSymbol={temperatureUnit.symbol} />
+            <Forecast weatherData={weatherData} />
           </>
         }
       </main>

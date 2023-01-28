@@ -21,7 +21,7 @@ In order to setup and work on this project on your own, you will need to:
 `npm run dev`
 
 ## Usage
-Type in a city in the search bar and the webpage will display its current weather and its future daily forecast. If the location is different from the one you want, type the location  name in the search bar and after a second, a search result will pop up and allow you to select the correct location. 
+Type in a city in the search bar and the webpage will display its current weather and its future forecast. Click between the daily and hourly button to see the daily or hourly forecast. Swipe left and right on the forecast to see more. Click on the temperature unit button to toggle between displaying the temperature in Fahrenheit or Celsius. Click on the volume button to toggle on and off the weather sound effects that match the location's current weather.
 
 ## Roadmap
 - [x] Dynamically change background image based on location's current weather
@@ -30,7 +30,7 @@ Type in a city in the search bar and the webpage will display its current weathe
 - [x] Show search results when there are cities with the same names and allows user to select which one they want
 - [x] Add hourly forecast for the next 24 hours
 - [x] Add button to toggle between Fahrenheit and Celcius
-- [ ] Add sound effects based on the weather
+- [x] Add sound effects based on the weather
 - [ ] Display weather based on user's location by default
 - [ ] Add more weather statistics
 - [ ] Add animations
@@ -45,4 +45,9 @@ Type in a city in the search bar and the webpage will display its current weathe
 - [Drizzle Photo](https://unsplash.com/photos/qPvBmSvmohs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [Roman Synkevych 🇺🇦](https://unsplash.com/@synkevych?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
 - [Rain Photo](https://unsplash.com/photos/cWM1ZOSUzU4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [Alvin Leopold](https://unsplash.com/@anleo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
 - [Snow Photo](https://unsplash.com/photos/IWenq-4JHqo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [Adam Chang](https://unsplash.com/@sametomorrow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
-  
+- Rain Sound Effect by [JuliusH](https://pixabay.com/users/juliush-3921568/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=8186) from [Pixabay](https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=8186)
+- Thunderstorm Sound Effect by [JuliusH](https://pixabay.com/users/juliush-3921568/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=7803) from [Pixabay](https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=7803)
+- Sunny Sound Effect from [Pixabay](https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6771)
+- Drizzle Sound Effect from [Pixabay](https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6704)
+- Snow Sound Effect from [Pixabay]("https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6195")
+- Cloudy Sound Effect by [Liecio](https://pixabay.com/users/liecio-3298866/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=109590) from [Pixabay](https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=109590)

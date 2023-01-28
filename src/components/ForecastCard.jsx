@@ -5,11 +5,11 @@ function ForecastCard(props) {
       <i className={`bi ${props.icon} card__icon`}></i>
       <p className="card__description">{props.description}</p>
       {props.metric === "hourly" ?
-        <p>{`${props.temp} ${props.temperatureSymbol}`}</p> :
+        <p className="card__temperature">{props.temp}</p> :
 
         <div className="card__low-high">
-          <p className="card__low">{`L:${props.low_temp} ${props.temperatureSymbol}`}</p>
-          <p className="card__high">{`H:${props.high_temp} ${props.temperatureSymbol}`}</p>
+          <p className="card__low">L:{props.low_temp}</p>
+          <p className="card__high">H:{props.high_temp}</p>
         </div>
       }
     </div>

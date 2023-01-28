@@ -4,6 +4,12 @@ import drizzleImg from "./assets/img/drizzle.jpg"
 import rainImg from "./assets/img/rain.jpg"
 import snowImg from "./assets/img/snow.jpg"
 import thunderstormImg from "./assets/img/thunderstorm.jpg"
+import cloudySound from "./assets/sound/cloudy.mp3"
+import drizzleSound from "./assets/sound/drizzle.mp3"
+import rainSound from "./assets/sound/rain.mp3"
+import snowSound from "./assets/sound/snow.mp3"
+import sunnySound from "./assets/sound/sunny.mp3"
+import thunderstormSound from "./assets/sound/thunderstorm.mp3"
 import { DateTime } from "luxon";
 
 const weatherDescription = {
@@ -99,7 +105,26 @@ function selectBackgroundImage(code) {
     case (code > 94 && code < 100):
       return thunderstormImg
     default:
-      return cloudyImg
+      return sunnyImg
+  }
+}
+
+function selectWeatherSound(code) {
+  switch (true) {
+    case (code === 0):
+      return sunnySound
+    case (code > 0 && code < 4):
+      return cloudySound
+    case (code > 50 && code < 58):
+      return drizzleSound
+    case (code > 60 && code < 68 || code > 79 && code < 83):
+      return rainSound
+    case (code > 70 && code < 78 || code > 84 && code < 87):
+      return snowSound
+    case (code > 94 && code < 100):
+      return thunderstormSound
+    default:
+      return sunnySound
   }
 }
 
@@ -108,9 +133,8 @@ function selectDescription(code) {
 }
 
 function convertTemperature(temp) {
-  return `${Math.ceil(temp)}`
+  return `${Math.ceil(temp)}°`
 }
-
 
 export {
   selectWeatherIcon,
@@ -119,5 +143,6 @@ export {
   getCurrentTime,
   hasTimePassed,
   selectBackgroundImage,
+  selectWeatherSound,
   selectDescription,
 }

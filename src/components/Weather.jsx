@@ -21,7 +21,7 @@ function Weather(props) {
       <div className="weather__current">
         <i className={`weather__icon bi ${selectWeatherIcon(weathercode)}`}></i>
         <p className="weather__temperature">
-          {`${convertTemperature(temperature)} ${props.temperatureSymbol}`}
+          {convertTemperature(temperature)}
         </p>
       </div>
       <p className="weather__description">
@@ -29,10 +29,10 @@ function Weather(props) {
       </p>
       <div className="weather__low-high">
         <p className="weather__low">
-          {`L:${convertTemperature(temperature_2m_min[0])} ${props.temperatureSymbol}`}
+          L:{convertTemperature(temperature_2m_min[0])}
         </p>
         <p className="weather__high">
-          {`H:${convertTemperature(temperature_2m_max[0])} ${props.temperatureSymbol}`}
+          H:{convertTemperature(temperature_2m_max[0])}
         </p>
       </div>
     </div>
