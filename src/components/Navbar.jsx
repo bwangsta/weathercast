@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { motion } from "framer-motion"
 
 import { selectWeatherSound } from "../helper"
 import Searchbar from "./Searchbar"
@@ -37,13 +38,25 @@ function Navbar(props) {
       />
       {props.status === "submitted" &&
         <div className="navbar__btns">
-          <button type="button" className="unit-btn" onClick={props.handleUnitClick}>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="button"
+            className="unit-btn"
+            onClick={props.handleUnitClick}
+          >
             {props.temperatureSymbol}
-          </button>
-          <button className="volume-btn" onClick={handleVolumeClick}>
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="button"
+            className="volume-btn"
+            onClick={handleVolumeClick}
+          >
             <i className={`bi ${soundEffect.icon}`}></i>
             <audio src={sound} autoPlay muted={soundEffect.muted} loop></audio>
-          </button>
+          </motion.button>
         </div>
       }
     </nav >

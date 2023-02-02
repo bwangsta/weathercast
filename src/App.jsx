@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion"
 
 import './App.css'
 import Navbar from "./components/Navbar"
@@ -130,13 +131,17 @@ function App() {
       />
       <main id="content">
         {status === "submitted" &&
-          <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
             <section className="hero container">
               <Location geoData={geoData[indexRef.current]} />
               <Weather weatherData={weatherData} />
             </section>
             <Forecast weatherData={weatherData} />
-          </>
+          </motion.div>
         }
       </main>
       <Footer />

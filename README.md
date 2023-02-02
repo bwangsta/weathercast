@@ -31,9 +31,9 @@ Type in a city in the search bar and the webpage will display its current weathe
 - [x] Add hourly forecast for the next 24 hours
 - [x] Add button to toggle between Fahrenheit and Celcius
 - [x] Add sound effects based on the weather
+- [x] Add animations
 - [ ] Display weather based on user's location by default
 - [ ] Add more weather statistics
-- [ ] Add animations
 - [ ] Swap between day and night background images depending on sunrise/sunset time
 
 ## Acknowledgements
