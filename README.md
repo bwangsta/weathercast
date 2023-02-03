@@ -1,24 +1,61 @@
-# Weathering React
+# WeatherCast
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
 This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I used React. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React to get more practice using React.
 
 ## Built With 
 - React
-
-## Live Preview
-WIP
+- Javascript
 
 ## Getting Started
 
-In order to setup and work on this project on your own, you will need to:
+### Prerequisites
 
-1. Clone this project\
-`git clone https://github.com/bwangsta/weathering-react.git`
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-2. Install required dependencies\
-`npm install`
+### Installation
+1. Clone this project
+```sh
+git clone https://github.com/bwangsta/weathercast.git`
+```
 
-3. Run\
-`npm run dev`
+2. Install required dependencies
+```sh
+npm install
+```
+
+3. Run
+```sh
+npm run dev
+```
 
 ## Usage
 Type in a city in the search bar and the webpage will display its current weather and its future forecast. Click between the daily and hourly button to see the daily or hourly forecast. Swipe left and right on the forecast to see more. Click on the temperature unit button to toggle between displaying the temperature in Fahrenheit or Celsius. Click on the volume button to toggle on and off the weather sound effects that match the location's current weather.
@@ -36,9 +73,12 @@ Type in a city in the search bar and the webpage will display its current weathe
 - [ ] Add more weather statistics
 - [ ] Swap between day and night background images depending on sunrise/sunset time
 
-## Acknowledgements
-- [Bootstrap Icons](https://icons.getbootstrap.com/)
+## Acknowledgments
 - [Open-Meteo](https://open-meteo.com/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Swiper](https://swiperjs.com/)
+- [Luxon](https://moment.github.io/luxon/#/)
 - [Cloudy Photo](https://unsplash.com/photos/V4qjYCac7y8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [Artem Anokhin](https://unsplash.com/@atronyx?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
 - [Sunny Photo](https://unsplash.com/photos/TSgwbumanuE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [CHUTTERSNAP](https://unsplash.com/@chuttersnap?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
 - [Thunderstorm Photo](https://unsplash.com/images/nature/thunderstorm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) by [Tasos Mansour](https://unsplash.com/@mantasos?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)
