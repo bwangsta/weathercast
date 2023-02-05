@@ -1,9 +1,10 @@
 function Footer() {
-    return (
-        <footer>
-            <p>Created by Brian Wang bwangsta 2023</p>
-        </footer>
-    )
+  const currentYear = new Date()
+  return (
+    <footer>
+      <p> Copyright &copy; {currentYear.getFullYear()} bwangsta</p>
+    </footer>
+  )
 }
 
 export default Footer

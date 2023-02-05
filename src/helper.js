@@ -10,7 +10,7 @@ import rainSound from "./assets/sound/rain.mp3"
 import snowSound from "./assets/sound/snow.mp3"
 import sunnySound from "./assets/sound/sunny.mp3"
 import thunderstormSound from "./assets/sound/thunderstorm.mp3"
-import { DateTime } from "luxon";
+import { DateTime } from "luxon"
 
 const weatherDescription = {
   0: "Clear sky",
@@ -40,7 +40,7 @@ const weatherDescription = {
   86: "Heavy snow showers",
   95: "Thunderstorm",
   96: "Thunderstorm with slight hail",
-  99: "Thunderstorm with heavy hail"
+  99: "Thunderstorm with heavy hail",
 }
 
 function getCurrentTime(timezone) {
@@ -71,19 +71,19 @@ function hasTimePassed(datetime, timezone) {
 
 function selectWeatherIcon(code) {
   switch (true) {
-    case (code === 0):
+    case code === 0:
       return "bi-brightness-high"
-    case (code > 0 && code < 4):
+    case code > 0 && code < 4:
       return "bi-clouds"
-    case (code > 44 && code < 49):
+    case code > 44 && code < 49:
       return "bi-cloud-fog2"
-    case (code > 50 && code < 58):
+    case code > 50 && code < 58:
       return "bi-cloud-drizzle"
-    case (code > 60 && code < 68 || code > 79 && code < 83):
+    case (code > 60 && code < 68) || (code > 79 && code < 83):
       return "bi-cloud-rain"
-    case (code > 70 && code < 78 || code > 84 && code < 87):
+    case (code > 70 && code < 78) || (code > 84 && code < 87):
       return "bi-snow"
-    case (code > 94 && code < 100):
+    case code > 94 && code < 100:
       return "bi-cloud-lightning"
     default:
       return "bi-cloudy"
@@ -92,17 +92,17 @@ function selectWeatherIcon(code) {
 
 function selectBackgroundImage(code) {
   switch (true) {
-    case (code === 0):
+    case code === 0:
       return sunnyImg
-    case (code > 0 && code < 4):
+    case code > 0 && code < 4:
       return cloudyImg
-    case (code > 50 && code < 58):
+    case code > 50 && code < 58:
       return drizzleImg
-    case (code > 60 && code < 68 || code > 79 && code < 83):
+    case (code > 60 && code < 68) || (code > 79 && code < 83):
       return rainImg
-    case (code > 70 && code < 78 || code > 84 && code < 87):
+    case (code > 70 && code < 78) || (code > 84 && code < 87):
       return snowImg
-    case (code > 94 && code < 100):
+    case code > 94 && code < 100:
       return thunderstormImg
     default:
       return sunnyImg
@@ -111,17 +111,17 @@ function selectBackgroundImage(code) {
 
 function selectWeatherSound(code) {
   switch (true) {
-    case (code === 0):
+    case code === 0:
       return sunnySound
-    case (code > 0 && code < 4):
+    case code > 0 && code < 4:
       return cloudySound
-    case (code > 50 && code < 58):
+    case code > 50 && code < 58:
       return drizzleSound
-    case (code > 60 && code < 68 || code > 79 && code < 83):
+    case (code > 60 && code < 68) || (code > 79 && code < 83):
       return rainSound
-    case (code > 70 && code < 78 || code > 84 && code < 87):
+    case (code > 70 && code < 78) || (code > 84 && code < 87):
       return snowSound
-    case (code > 94 && code < 100):
+    case code > 94 && code < 100:
       return thunderstormSound
     default:
       return sunnySound

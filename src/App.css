@@ -1,36 +1,33 @@
+.App {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .container {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.active {
-  background-color: var(--gray);
-}
-
+/* NAVIGATION BAR */
 .navbar {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.navbar__btns {
-  display: flex;
   gap: 0.5rem;
+  padding: 1rem;
 }
 
 .unit-btn,
 .volume-btn {
   font-size: var(--text-xl);
-  font-weight: 700;
   border-radius: 0.5rem;
-  padding: 0.3rem;
-  /* border: none; */
-  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+  padding: 0.2rem 0.4rem;
 }
 
+/* SEARCHBAR */
 .search-form {
   display: grid;
   grid-template-areas:
@@ -49,11 +46,12 @@
   z-index: 10;
 }
 
-.search-results>li {
+.search-results > li {
   padding: 0.5rem;
+  font-weight: 400;
 }
 
-.search-results>li:hover {
+.search-results > li:hover {
   background-color: black;
 }
 
@@ -66,7 +64,8 @@
   padding: 0.5rem;
   font-size: var(--text-base);
   border: 2px solid var(--white);
-  text-indent: 1.5rem;
+  text-indent: 1.75rem;
+  font-weight: 400;
 }
 
 .invalid {
@@ -80,16 +79,19 @@
 
 .search__input::placeholder {
   color: var(--white);
+  font-weight: 400;
 }
 
 .search__input:focus::placeholder {
   color: transparent;
 }
 
-.search-btn {
+.search__icon {
   grid-area: searchbar;
   border: none;
   justify-self: start;
+  align-self: center;
+  margin-left: 0.75rem;
   font-weight: 900;
 }
 
@@ -104,42 +106,37 @@
 .hero {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 3rem;
 }
 
-@media (min-width: 770px) {
-  .hero {
-    justify-content: space-between;
-  }
-}
-
 .location__name {
-  font-size: clamp(var(--text-3xl), 10vw, var(--text-4xl));
+  font-size: clamp(var(--text-xl) - 1vw, 5vw, var(--text-4xl));
   font-weight: 900;
 }
 
 .location__state,
 .location__country {
   font-size: clamp(var(--text-xl), 5vw, var(--text-2xl));
-  font-weight: 700;
 }
 
 .weather {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.25rem;
 }
 
 .weather__date,
 .weather__description,
 .weather__low-high {
-  font-size: var(--text-xl)
+  font-size: var(--text-xl);
 }
 
 .weather__weekday {
   font-size: var(--text-2xl);
+  font-weight: 900;
 }
 
 .weather__icon {
@@ -159,12 +156,27 @@
   font-weight: 900;
 }
 
+/* FORECAST */
 .swiper-wrapper {
   padding: 1rem 0;
 }
 
 .forecast__btns {
   text-align: center;
+}
+
+.daily-btn {
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.hourly-btn {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-left: none;
+}
+
+.active {
+  background-color: var(--darkgray);
 }
 
 .card {
@@ -177,8 +189,7 @@
 }
 
 .card__title {
-  font-size: clamp(var(--text-base), 5vw, var(--text-xl));
-  font-weight: 700;
+  font-size: clamp(var(--text-lg), 5vw, var(--text-xl));
 }
 
 .card__icon {
@@ -189,6 +200,12 @@
   text-align: center;
 }
 
+.card__low-high,
+.card__temperature {
+  font-size: var(--text-lg);
+}
+
+/* FOOTER */
 footer {
   font-size: var(--text-sm);
   padding: 0 0.5rem;

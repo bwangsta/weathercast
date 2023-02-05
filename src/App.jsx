@@ -1,18 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
-import './App.css'
+import "./App.css"
 import Navbar from "./components/Navbar"
-import Location from "./components/Location";
-import Weather from "./components/Weather";
-import Forecast from "./components/Forecast";
+import Location from "./components/Location"
+import Weather from "./components/Weather"
+import Forecast from "./components/Forecast"
 import Footer from "./components/Footer"
 
 function App() {
   const [locationText, setLocationText] = useState("")
   const [geoData, setGeoData] = useState([])
   const [weatherData, setWeatherData] = useState({})
-  const [temperatureUnit, setTemperatureUnit] = useState({ type: "fahrenheit", symbol: "°F" })
+  const [temperatureUnit, setTemperatureUnit] = useState({
+    type: "fahrenheit",
+    symbol: "°F",
+  })
   const [status, setStatus] = useState("empty")
   const [errorType, setErrorType] = useState("")
   const indexRef = useRef(0)
@@ -22,37 +25,39 @@ function App() {
     const item = localStorage.getItem(locationText)
     if (item === null) {
       try {
-        const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`)
+        const response = await fetch(
+          `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`
+        )
         const data = await response.json()
         if (data.results !== undefined) {
           setGeoData(data.results)
           localStorage.setItem(locationText, JSON.stringify(data.results))
-        }
-        else {
+        } else {
           setStatus("error")
-          setErrorType("Unable to find the location. Please enter a different location")
+          setErrorType(
+            "Unable to find the location. Please enter a different location"
+          )
         }
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error)
       }
-    }
-    else {
+    } else {
       const parsedLocations = JSON.parse(item)
       setGeoData(parsedLocations)
     }
   }
 
-  // get weather data from API 
+  // get weather data from API
   async function fetchWeather(index) {
     try {
       const { latitude, longitude } = geoData[index]
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit.type}`)
+      const response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit.type}`
+      )
       const data = await response.json()
       setWeatherData(data)
       setStatus("submitted")
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -83,11 +88,10 @@ function App() {
   }
 
   function handleUnitClick() {
-    setTemperatureUnit(prevUnit => {
+    setTemperatureUnit((prevUnit) => {
       if (prevUnit.type === "fahrenheit") {
         return { type: "celsius", symbol: "°C" }
-      }
-      else {
+      } else {
         return { type: "fahrenheit", symbol: "°F" }
       }
     })
@@ -98,12 +102,10 @@ function App() {
       if (locationText.length === 0) {
         setStatus("error")
         setErrorType("Please enter a location")
-      }
-      else if (locationText.length === 1) {
+      } else if (locationText.length === 1) {
         setStatus("error")
         setErrorType("Location name should be at least 2 characters")
-      }
-      else {
+      } else {
         fetchGeocode()
       }
     }
@@ -116,7 +118,7 @@ function App() {
   }, [temperatureUnit])
 
   return (
-    <>
+    <div className="App container">
       <Navbar
         geoData={geoData}
         locationText={locationText}
@@ -130,22 +132,22 @@ function App() {
         weatherData={weatherData}
       />
       <main id="content">
-        {status === "submitted" &&
+        {status === "submitted" && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
           >
-            <section className="hero container">
+            <section className="hero">
               <Location geoData={geoData[indexRef.current]} />
               <Weather weatherData={weatherData} />
             </section>
             <Forecast weatherData={weatherData} />
           </motion.div>
-        }
+        )}
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

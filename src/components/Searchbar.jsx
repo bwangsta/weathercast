@@ -2,7 +2,6 @@ import SearchError from "./SearchError"
 import SearhResults from "./SearchResults"
 
 function Searchbar(props) {
-
   return (
     <form
       noValidate
@@ -10,9 +9,12 @@ function Searchbar(props) {
       className="search-form"
       onSubmit={(e) => props.handleSubmit(e)}
     >
+      <div className="search__icon">
+        <i className="bi bi-search"></i>
+      </div>
       <input
         type="search"
-        placeholder="Location Name"
+        placeholder="Search..."
         id="searchbar"
         className={`search__input ${props.status === "error" ? "invalid" : ""}`}
         name="q"
@@ -25,12 +27,9 @@ function Searchbar(props) {
         value={props.locationText}
       />
       {props.status === "error" && <SearchError errorType={props.errorType} />}
-      {props.status === "typing" &&
+      {props.status === "typing" && (
         <SearhResults geoData={props.geoData} handleClick={props.handleClick} />
-      }
-      <button type="submit" className="search-btn">
-        <i className="bi bi-search"></i>
-      </button>
+      )}
     </form>
   )
 }

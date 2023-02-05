@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900;1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900;1000&display=swap");
 
 :root {
-  --white: #FBFBFB;
+  --white: #fbfbfb;
   --gray: rgb(104 104 104);
   --black: rgb(37, 36, 36);
+  --darkgray: #7a7a7a;
   --text-sm: 0.8rem;
   --text-base: 1rem;
+  --text-lg: 1.25rem;
   --text-xl: 1.5rem;
   --text-2xl: 2.25rem;
   --text-3xl: 3.375rem;
@@ -29,7 +31,8 @@
 #root {
   min-height: 100vh;
   min-height: 100dvh;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
   background-color: var(--gray);
   background-image: url("./assets/img/sunny.jpg");
   background-repeat: no-repeat;
@@ -37,9 +40,10 @@
   background-blend-mode: multiply;
   background-position: center;
   color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+}
+
+section {
+  padding: 2rem 0;
 }
 
 ul {
@@ -54,7 +58,7 @@ li {
 button {
   background-color: transparent;
   color: var(--white);
-  border: 1px solid var(--white);
+  border: 2px solid var(--white);
   padding: 0.5rem;
   border-radius: 5px;
 }
