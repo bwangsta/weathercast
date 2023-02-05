@@ -2,7 +2,7 @@
   "name": "weathercast",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://bwangsta.github.io/<repo>/",
+  "homepage": "http://bwangsta.github.io/weathercast",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
