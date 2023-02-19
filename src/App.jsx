@@ -12,38 +12,53 @@ function App() {
   const [locationText, setLocationText] = useState("")
   const [geoData, setGeoData] = useState([])
   const [weatherData, setWeatherData] = useState({})
-  const [temperatureUnit, setTemperatureUnit] = useState({
-    type: "fahrenheit",
-    symbol: "°F",
-  })
+  const [temperatureUnit, setTemperatureUnit] = useState("fahrenheit")
   const [status, setStatus] = useState("empty")
   const [errorType, setErrorType] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
   const indexRef = useRef(0)
+
+  const controller = new AbortController()
+
+  useEffect(() => {
+    setIsLoading(true)
+    if (status !== "empty") {
+      if (locationText.length === 0) {
+        setStatus("error")
+        setErrorType("Please enter a location")
+      } else if (locationText.length === 1) {
+        setStatus("error")
+        setErrorType("Location name should be at least 2 characters")
+      } else {
+        fetchGeocode()
+      }
+    }
+    setIsLoading(false)
+    return () => {
+      controller.abort()
+    }
+  }, [locationText])
 
   // get location data from API
   async function fetchGeocode() {
-    const item = localStorage.getItem(locationText)
-    if (item === null) {
-      try {
-        const response = await fetch(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`
+    try {
+      const response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`,
+        { signal: controller.signal }
+      )
+      const data = await response.json()
+      if (data.results !== undefined) {
+        setGeoData(data.results)
+      } else {
+        setStatus("error")
+        setErrorType(
+          "Unable to find the location. Please enter a different location"
         )
-        const data = await response.json()
-        if (data.results !== undefined) {
-          setGeoData(data.results)
-          localStorage.setItem(locationText, JSON.stringify(data.results))
-        } else {
-          setStatus("error")
-          setErrorType(
-            "Unable to find the location. Please enter a different location"
-          )
-        }
-      } catch (error) {
-        console.log(error)
       }
-    } else {
-      const parsedLocations = JSON.parse(item)
-      setGeoData(parsedLocations)
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        console.error(error)
+      }
     }
   }
 
@@ -52,13 +67,13 @@ function App() {
     try {
       const { latitude, longitude } = geoData[index]
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit.type}`
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit}`
       )
       const data = await response.json()
       setWeatherData(data)
       setStatus("submitted")
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -88,34 +103,10 @@ function App() {
   }
 
   function handleUnitClick() {
-    setTemperatureUnit((prevUnit) => {
-      if (prevUnit.type === "fahrenheit") {
-        return { type: "celsius", symbol: "°C" }
-      } else {
-        return { type: "fahrenheit", symbol: "°F" }
-      }
-    })
+    setTemperatureUnit((prevUnit) =>
+      prevUnit === "fahrenheit" ? "celsius" : "fahrenheit"
+    )
   }
-
-  useEffect(() => {
-    if (status !== "empty") {
-      if (locationText.length === 0) {
-        setStatus("error")
-        setErrorType("Please enter a location")
-      } else if (locationText.length === 1) {
-        setStatus("error")
-        setErrorType("Location name should be at least 2 characters")
-      } else {
-        fetchGeocode()
-      }
-    }
-  }, [locationText])
-
-  useEffect(() => {
-    if (status !== "empty") {
-      fetchWeather(indexRef.current)
-    }
-  }, [temperatureUnit])
 
   return (
     <div className="App container">
@@ -124,7 +115,7 @@ function App() {
         locationText={locationText}
         status={status}
         errorType={errorType}
-        temperatureSymbol={temperatureUnit.symbol}
+        temperatureUnit={temperatureUnit}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleClick={handleClick}

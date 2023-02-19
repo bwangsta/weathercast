@@ -9,7 +9,9 @@ function Navbar(props) {
     icon: "bi-volume-mute",
     muted: true,
   })
+
   let sound
+  let temperatureSymbol = props.temperatureUnit === "fahrenheit" ? "°F" : "°C"
 
   if (props.status === "submitted") {
     const weatherCode = props.weatherData.current_weather.weathercode
@@ -58,7 +60,7 @@ function Navbar(props) {
           className="unit-btn"
           onClick={props.handleUnitClick}
         >
-          {props.temperatureSymbol}
+          {temperatureSymbol}
         </motion.button>
       )}
     </nav>
