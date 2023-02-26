@@ -15,13 +15,12 @@ function App() {
   const [temperatureUnit, setTemperatureUnit] = useState("fahrenheit")
   const [status, setStatus] = useState("empty")
   const [errorType, setErrorType] = useState("")
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const indexRef = useRef(0)
 
   const controller = new AbortController()
 
   useEffect(() => {
-    setIsLoading(true)
     if (status !== "empty") {
       if (locationText.length === 0) {
         setStatus("error")
@@ -33,14 +32,20 @@ function App() {
         fetchGeocode()
       }
     }
-    setIsLoading(false)
     return () => {
       controller.abort()
     }
   }, [locationText])
 
+  useEffect(() => {
+    if (status === "submitted") {
+      fetchWeather(indexRef.current)
+    }
+  }, [temperatureUnit])
+
   // get location data from API
   async function fetchGeocode() {
+    setIsLoading(true)
     try {
       const response = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=10`,
@@ -60,10 +65,12 @@ function App() {
         console.error(error)
       }
     }
+    setIsLoading(false)
   }
 
   // get weather data from API
   async function fetchWeather(index) {
+    setIsLoading(true)
     try {
       const { latitude, longitude } = geoData[index]
       const response = await fetch(
@@ -75,6 +82,7 @@ function App() {
     } catch (error) {
       console.error(error)
     }
+    setIsLoading(false)
   }
 
   // when user hits submit in search input
