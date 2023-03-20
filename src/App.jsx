@@ -104,8 +104,8 @@ function App() {
 
   // when a search result is clicked on
   // retrieve data for that specific location
-  function handleClick(event) {
-    indexRef.current = parseInt(event.target.dataset.index)
+  function handleClick(index) {
+    indexRef.current = index
     fetchWeather(indexRef.current)
     setLocationText("")
   }
