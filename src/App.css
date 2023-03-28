@@ -12,12 +12,27 @@
   padding: 0.5rem 1rem;
 }
 
+/* LOADER */
+.loader {
+  font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bi-sun {
+  font-size: var(--text-4xl);
+  display: block;
+  text-align: center;
+}
+
 /* NAVIGATION BAR */
 .navbar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .unit-btn,

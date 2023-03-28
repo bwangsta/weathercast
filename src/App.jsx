@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 import "./App.css"
+import Loader from "./components/Loader"
 import Navbar from "./components/Navbar"
 import Location from "./components/Location"
 import Weather from "./components/Weather"
@@ -80,6 +81,10 @@ function App() {
     setTemperatureUnit((prevUnit) =>
       prevUnit === "fahrenheit" ? "celsius" : "fahrenheit"
     )
+  }
+
+  if (isLoading) {
+    return <Loader />
   }
 
   return (
