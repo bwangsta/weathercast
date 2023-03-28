@@ -5,13 +5,11 @@ import { selectWeatherSound } from "../helper"
 import Searchbar from "./Searchbar"
 
 function Navbar(props) {
-  const [soundEffect, setSoundEffect] = useState({
-    icon: "bi-volume-mute",
-    muted: true,
-  })
+  const [isMuted, setMuted] = useState(true)
 
   let sound
   let temperatureSymbol = props.temperatureUnit === "fahrenheit" ? "°F" : "°C"
+  let volumeIcon = isMuted ? "bi-volume-mute" : "bi-volume-up"
 
   if (props.status === "submitted") {
     const weatherCode = props.weatherData.current_weather.weathercode
@@ -20,13 +18,7 @@ function Navbar(props) {
 
   // toggle muted audio
   function handleVolumeClick() {
-    setSoundEffect((prevSoundEffect) => {
-      if (prevSoundEffect.muted) {
-        return { icon: "bi-volume-up", muted: false }
-      } else {
-        return { icon: "bi-volume-mute", muted: true }
-      }
-    })
+    setMuted((prevMuted) => !prevMuted)
   }
 
   return (
@@ -39,15 +31,15 @@ function Navbar(props) {
           className="volume-btn"
           onClick={handleVolumeClick}
         >
-          <i className={`bi ${soundEffect.icon}`}></i>
-          <audio src={sound} autoPlay muted={soundEffect.muted} loop></audio>
+          <i className={`bi ${volumeIcon}`}></i>
+          <audio src={sound} autoPlay muted={isMuted} loop></audio>
         </motion.button>
       )}
       <Searchbar
         geoData={props.geoData}
         locationText={props.locationText}
         status={props.status}
-        errorType={props.errorType}
+        searchError={props.searchError}
         handleChange={props.handleChange}
         handleSubmit={props.handleSubmit}
         handleClick={props.handleClick}

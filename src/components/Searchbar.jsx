@@ -26,7 +26,9 @@ function Searchbar(props) {
         onChange={(e) => props.handleChange(e)}
         value={props.locationText}
       />
-      {props.status === "error" && <SearchError errorType={props.errorType} />}
+      {props.status === "error" && (
+        <SearchError searchError={props.searchError} />
+      )}
       {props.status === "typing" && (
         <SearhResults geoData={props.geoData} handleClick={props.handleClick} />
       )}
