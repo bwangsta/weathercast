@@ -18,7 +18,13 @@ function useGeocode(locationText, status, setError, setStatus, setSearchError) {
           `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}`,
           { signal: controller.signal }
         )
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              setError(true)
+              return
+            }
+            return response.json()
+          })
           .then((data) => {
             if (data.results !== undefined) {
               setGeoData(data.results)
@@ -32,7 +38,8 @@ function useGeocode(locationText, status, setError, setStatus, setSearchError) {
           })
           .catch((error) => {
             if (error.name !== "AbortError") {
-              setError(error)
+              setError(true)
+              console.error(error)
             }
           })
       }

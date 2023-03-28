@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 
 import "./App.css"
 import Loader from "./components/Loader"
+import Error from "./components/Error"
 import Navbar from "./components/Navbar"
 import Location from "./components/Location"
 import Weather from "./components/Weather"
@@ -15,7 +16,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({})
   const [temperatureUnit, setTemperatureUnit] = useState("fahrenheit")
   const [status, setStatus] = useState("empty")
-  const [error, setError] = useState("")
+  const [isError, setError] = useState(false)
   const [searchError, setSearchError] = useState("")
   const [isLoading, setLoading] = useState(false)
   const geoData = useGeocode(
@@ -41,10 +42,15 @@ function App() {
       const response = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,weathercode&current_weather=true&timezone=auto&temperature_unit=${temperatureUnit}`
       )
+      if (!response.ok) {
+        setError(true)
+        return
+      }
       const data = await response.json()
       setWeatherData(data)
     } catch (error) {
-      setError(error)
+      setError(true)
+      console.error(error)
     } finally {
       setLoading(false)
     }
@@ -85,6 +91,10 @@ function App() {
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (isError) {
+    return <Error />
   }
 
   return (

@@ -12,19 +12,21 @@
   padding: 0.5rem 1rem;
 }
 
-/* LOADER */
-.loader {
+/* LOADER & ERROR */
+.loader,
+.error {
   font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-.bi-sun {
+.loader > .bi-sun,
+.error > .bi-cloud-lightning {
   font-size: var(--text-4xl);
   display: block;
-  text-align: center;
 }
 
 /* NAVIGATION BAR */
@@ -118,6 +120,7 @@
   position: absolute;
 }
 
+/* LOCATION */
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -126,8 +129,12 @@
   gap: 3rem;
 }
 
+.location {
+  overflow: hidden;
+}
+
 .location__name {
-  font-size: clamp(var(--text-xl) - 1vw, 5vw, var(--text-4xl));
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
   font-weight: 900;
 }
 
@@ -136,6 +143,7 @@
   font-size: clamp(var(--text-xl), 5vw, var(--text-2xl));
 }
 
+/* WEATHER */
 .weather {
   display: flex;
   flex-direction: column;
