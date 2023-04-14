@@ -1,9 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react"
-import { FreeMode, Pagination } from "swiper"
 import { motion } from "framer-motion"
 import "swiper/css"
-import "swiper/css/free-mode"
-import "swiper/css/pagination"
 
 import ForecastCard from "./ForecastCard"
 import {
@@ -46,29 +43,26 @@ function HourlyForecast(props) {
       transition={{ duration: 1 }}
     >
       <Swiper
-        freeMode={true}
         grabCursor={true}
-        modules={[FreeMode, Pagination]}
         spaceBetween={16}
         slidesPerView={6}
         breakpoints={{
           320: {
             slidesPerView: 2,
-            spaceBetween: 16
+            spaceBetween: 16,
           },
           640: {
             slidesPerView: 4,
-            spaceBetween: 16
+            spaceBetween: 16,
           },
-          // when window width is >= 640px
           1000: {
             slidesPerView: 6,
-            spaceBetween: 16
-          }
+            spaceBetween: 16,
+          },
         }}
       >
         {hourlyWeather}
-      </ Swiper >
+      </Swiper>
     </motion.div>
   )
 }

@@ -1,7 +1,5 @@
 # WeatherCast
 
-[Demo](https://bwangsta.github.io/weathercast/)
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -29,7 +27,9 @@
 
 ## About The Project
 
-This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I used React. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React to get more practice using React.
+[Demo](https://bwangsta.github.io/weathercast/)
+
+This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I built this using React. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React to get more practice using React.
 
 ## Built With
 
@@ -69,7 +69,7 @@ npm run dev
 
 ## Usage
 
-Type in a city in the search bar and the webpage will display its current weather and its future forecast. Click between the daily and hourly button to see the daily or hourly forecast. Swipe left and right on the forecast to see more. Click on the temperature unit button to toggle between displaying the temperature in Fahrenheit or Celsius. Click on the volume button to toggle on and off the weather sound effects that match the location's current weather.
+Type in a city in the search bar and the webpage will display its current weather and its future forecast. Click between the daily and hourly button to see the daily or hourly forecast. Swipe left and right on the forecast to see more. Click on the temperature unit button to toggle between displaying the temperature in Fahrenheit or Celsius. Click on the volume button to toggle the weather sound effects that match the location's current weather.
 
 ## Roadmap
 
@@ -88,6 +88,7 @@ Type in a city in the search bar and the webpage will display its current weathe
 ## Acknowledgments
 
 - [Open-Meteo](https://open-meteo.com/)
+- [Vite](https://vitejs.dev/)
 - [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Swiper](https://swiperjs.com/)
