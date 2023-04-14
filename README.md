@@ -27,6 +27,7 @@
 
 ## About The Project
 
+![WeatherCast Screenshot](https://user-images.githubusercontent.com/60533686/231925436-965ccbbd-67e4-424e-b56b-400af600e33f.png)
 [Demo](https://bwangsta.github.io/weathercast/)
 
 This project is the same as the [Weathering](https://github.com/bwangsta/weathering) project except I built this using React. The purpose of this project was to create a weather application that can receive and display data from the Open-Meteo API. I decided to build the same project, but instead use React to get more practice using React.
