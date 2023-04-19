@@ -15,7 +15,7 @@ function useGeocode(locationText, status, setError, setStatus, setSearchError) {
         setSearchError("Location name should be at least 2 characters")
       } else {
         fetch(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}`,
+          `https://geocoding-api.open-meteo.com/v1/search?name=${locationText}&count=50`,
           { signal: controller.signal }
         )
           .then((response) => {
